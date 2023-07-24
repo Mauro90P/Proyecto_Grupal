@@ -1,0 +1,410 @@
+<!doctype html>
+<html class="no-js is_dark" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Login/Register</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/aos.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/icofont.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("is_dark");
+        }
+        if (localStorage.getItem("theme-color") === "light") {
+            document.documentElement.classList.remove("is_dark");
+        } 
+    </script>
+
+</head>
+
+
+<body class="body__wrapper">
+    <!-- pre loader area start -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div id="object"></div>
+            </div>
+        </div>
+    </div>
+    <!-- pre loader area end -->
+
+    <!-- Dark/Light area start -->
+    <div class="mode_switcher my_switcher">
+        <button id="light--to-dark-button" class="light align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon dark__mode" viewBox="0 0 512 512">
+                <path
+                    d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z"
+                    fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="32" />
+            </svg>
+
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon light__mode" viewBox="0 0 512 512">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"
+                    d="M256 48v48M256 416v48M403.08 108.92l-33.94 33.94M142.86 369.14l-33.94 33.94M464 256h-48M96 256H48M403.08 403.08l-33.94-33.94M142.86 142.86l-33.94-33.94" />
+                <circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-miterlimit="10" stroke-width="32" />
+            </svg>
+
+            <span class="light__mode">Light</span>
+            <span class="dark__mode">Dark</span>
+        </button>
+    </div>
+    <!-- Dark/Light area end -->
+
+    <main class="main_wrapper">
+        <!-- topbar__section__stert -->
+        <!-- topbar__section__end -->
+        <!-- headar section start -->
+        <header>
+            <div class="headerarea headerarea__3 header__sticky header__area">
+                <div class="container desktop__menu__wrapper">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-6">
+                            <div class="headerarea__left">
+                                <div class="headerarea__left__logo">
+
+                                    <a href="#"><img src="img/logo/logo4.png" alt="logo"
+                                            style="width: 130px;height: 130px;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid mob_menu_wrapper">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <div class="mobile-logo">
+                            <a class="logo__dark" href="#"><img src="img/logo/logo4.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="header-right-wrap">
+
+                            <div class="mobile-off-canvas">
+                                <a class="mobile-aside-button" href="#"><i class="icofont-navigation-menu"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </header>
+        <!-- header section end -->
+
+        <!-- Mobile Menu Start Here -->
+        <div class="mobile-off-canvas-active">
+            <a class="mobile-aside-close"><i class="icofont  icofont-close-line"></i></a>
+            <div class="header-mobile-aside-wrap">
+                <div class="mobile-search">
+                    <form class="search-form" action="#">
+                        <input type="text" placeholder="Search entire store…">
+                        <button class="button-search"><i class="icofont icofont-search-2"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-menu-wrap">
+
+                    <div class="mobile-navigation">
+
+                    </div>
+
+                </div>
+                <div class="mobile-curr-lang-wrap">
+                    <div class="single-mobile-curr-lang">
+                        <a class="mobile-language-active" href="#">Language <i class="icofont-thin-down"></i></a>
+                        <div class="lang-curr-dropdown lang-dropdown-active">
+                            <ul>
+                                <li><a href="#">English (US)</a></li>
+                                <li><a href="#">English (UK)</a></li>
+                                <li><a href="#">Spanish</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <div class="single-mobile-curr-lang">
+                        <a class="mobile-account-active" href="#">My Account <i class="icofont-thin-down"></i></a>
+                        <div class="lang-curr-dropdown account-dropdown-active">
+                            <ul>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="login.html">Creat Account</a></li>
+                                <li><a href="login.html">My Account</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div class="mobile-social-wrap">
+                    <a class="facebook" href="#"><i class="icofont icofont-facebook"></i></a>
+                    <a class="twitter" href="#"><i class="icofont icofont-twitter"></i></a>
+                    <a class="pinterest" href="#"><i class="icofont icofont-pinterest"></i></a>
+                    <a class="instagram" href="#"><i class="icofont icofont-instagram"></i></a>
+                    <a class="google" href="#"><i class="icofont icofont-youtube-play"></i></a>
+                </div> -->
+            </div>
+        </div>
+        <!-- Mobile Menu end Here -->
+
+        <!-- theme fixed shadow -->
+        <div>
+            <div class="theme__shadow__circle"></div>
+            <div class="theme__shadow__circle shadow__right"></div>
+        </div>
+        <!-- theme fixed shadow -->
+
+        <!-- breadcrumbarea__section__start -->
+
+        <div class="breadcrumbarea">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb__content__wraper" data-aos="fade-up">
+                            <div class="breadcrumb__title">
+                                <h2 class="heading">Portal de Ingreso</h2>
+                            </div>
+                            <div class="breadcrumb__inner">
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li>Log In</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shape__icon__2">
+                <img class=" shape__icon__img shape__icon__img__1" src="img/herobanner/herobanner__1.png" alt="photo">
+                <img class=" shape__icon__img shape__icon__img__2" src="img/herobanner/herobanner__2.png" alt="photo">
+                <img class=" shape__icon__img shape__icon__img__3" src="img/herobanner/herobanner__3.png" alt="photo">
+                <img class=" shape__icon__img shape__icon__img__4" src="img/herobanner/herobanner__5.png" alt="photo">
+            </div>
+        </div>
+        <!-- breadcrumbarea__section__end-->
+
+        <!-- login__section__start -->
+        <div class="loginarea sp_top_100 sp_bottom_100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up">
+                        <ul class="nav  tab__button__wrap text-center" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="single__tab__link active" data-bs-toggle="tab"
+                                    data-bs-target="#projects__one" type="button">Login</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#projects__two"
+                                    type="button">Registro</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
+
+                        <div class="tab-pane fade active show" id="projects__one" role="tabpanel"
+                            aria-labelledby="projects__one">
+                            <div class="col-xl-8 col-md-8 offset-md-2">
+                                <div class="loginarea__wraper">
+                                    <div class="login__heading">
+                                        <h5 class="login__title">Login</h5>
+                                        <p class="login__description">No tienes Cuenta? <a href="#"
+                                                data-bs-toggle="modal" data-bs-target="#registerModal">Registrate
+                                                Gratis!!</a></p>
+                                    </div>
+                                    <form action="#">
+                                        <div class="login__form">
+                                            <label class="form__label">Email</label>
+                                            <input class="common__login__input" required type="email"
+                                                placeholder="Ingrese su email">
+                                        </div>
+                                        <div class="login__form">
+                                            <label class="form__label">Password</label>
+                                            <input class="common__login__input" required type="password"
+                                                placeholder="Password">
+                                        </div>
+                                        <div class="login__button">
+                                            <a class="default__button" href="#">Log In</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="projects__two" role="tabpanel" aria-labelledby="projects__two">
+                            <div class="col-xl-8 offset-md-2">
+                                <div class="loginarea__wraper">
+                                    <div class="login__heading">
+                                        <h5 class="login__title">Registro</h5>
+                                        <p class="login__description">Tienes Cuenta, pudes ir al? <a href="#"
+                                                data-bs-toggle="modal" data-bs-target="#registerModal">Log In</a></p>
+                                    </div>
+
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="login__form">
+                                                    <label class="form__label">Nombre</label>
+                                                    <input class="common__login__input" type="text"
+                                                        placeholder="Nombre">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="login__form">
+                                                    <label class="form__label">Apellido</label>
+                                                    <input class="common__login__input" type="text"
+                                                        placeholder="Apellido">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="login__form">
+                                                    <label class="form__label">Username</label>
+                                                    <input class="common__login__input" required type="text"
+                                                        placeholder="Username">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="login__form">
+                                                    <label class="form__label">Email</label>
+                                                    <input class="common__login__input" required type="email"
+                                                        placeholder="Tu Email">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="login__form">
+                                                    <label class="form__label">Password</label>
+                                                    <input class="common__login__input" required type="password"
+                                                        placeholder="Password">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="login__form">
+                                                    <label class="form__label">Re-Enter Password</label>
+                                                    <input class="common__login__input" required type="password"
+                                                        placeholder="Re-Enter Password">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="login__form d-flex justify-content-between flex-wrap gap-2">
+                                            <div class="form__check">
+                                                <input id="accept_pp" type="checkbox"> <label for="accept_pp">Accepte
+                                                    los Terminos y Politicas de Privacidad </label>
+                                            </div>
+
+                                        </div>
+                                        <div class="login__button">
+                                            <a class="default__button" href="#">Log In</a>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class=" login__shape__img educationarea__shape_image">
+                    <img class="hero__shape hero__shape__1" src="img/education/hero_shape2.png" alt="Shape">
+                    <img class="hero__shape hero__shape__2" src="img/education/hero_shape3.png" alt="Shape">
+                    <img class="hero__shape hero__shape__3" src="img/education/hero_shape4.png" alt="Shape">
+                    <img class="hero__shape hero__shape__4" src="img/education/hero_shape5.png" alt="Shape">
+                </div>
+
+
+            </div>
+        </div>
+        <!-- login__section__end -->
+        <!-- footer__section__start -->
+        <div class="footerarea">
+            <div class="container">
+                <div class="footerarea__wrapper footerarea__wrapper__2">
+                    <div class="footerarea__copyright__wrapper footerarea__copyright__wrapper__2">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3">
+                                <div class="copyright__logo">
+                                    <a href="/"><img src="img/logo/logo4.png" alt="logo"
+                                            style="width: 150px; height: 150px;"></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="footerarea__copyright__content footerarea__copyright__content__2">
+                                    <p>Copyright © <span>2023</span> by LureDev. All Rights Reserved.</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3">
+                                <div class="footerarea__icon footerarea__icon__2">
+                                    <ul>
+                                        <li><a href="//facebook.com"><i class="icofont-facebook"></i></a></li>
+                                        <li><a href="//twitter.com"><i class="icofont-twitter"></i></a></li>
+                                        <li><a href="//vimeo.com"><i class="icofont-vimeo"></i></a></li>
+                                        <li><a href="//linkedin.com"><i class="icofont-linkedin"></i></a></li>
+                                        <li><a href="//skype.com"><i class="icofont-skype"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- footer__section__end -->
+    </main>
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.meanmenu.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.getElementById("light--to-dark-button")?.classList.add("dark--mode");
+        }
+        if (localStorage.getItem("theme-color") === "light") {
+            document.getElementById("light--to-dark-button")?.classList.remove("dark--mode");
+        } 
+    </script>
+
+</body>
+
+</html>
