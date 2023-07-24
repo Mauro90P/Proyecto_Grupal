@@ -5,8 +5,6 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app) 
 
 
-
-
 #1_/login: Renderiza la plantilla 'auth/login.html'
 
 @app.route('/login')
@@ -35,6 +33,7 @@ def procesar_login():
         "email": usuario_encontrado.email,
         "apellido": usuario_encontrado.apellido,
         "nombre": usuario_encontrado.nombre,
+        "username": usuario_encontrado.username,
         "password": usuario_encontrado.password,
     }
 
@@ -60,15 +59,6 @@ def detalle():
     return render_template('dashboard.html', otros_usuario=otros_usuario)
 
 
-
-
-#2_/registro: Renderiza la plantilla 'registro.html'
-@app.route('/registro')
-def registro():
-    return render_template('/registro.html')
-
-
-
 #2.1_/procesar_registro: Procesa el formulario de registro enviado por POST
 
 @app.route('/procesar_registro', methods=['POST'])
@@ -87,6 +77,7 @@ def procesar_registro():
         'nombre': request.form['nombre'],
         'apellido': request.form['apellido'],
         'email': request.form['email'],
+        'username': request.form['username'],
         'password': password_hash,
     }
     existe_usuario = Usuario.get_by_email(request.form['email'])
@@ -100,10 +91,6 @@ def procesar_registro():
         flash("Errores", "danger")
         print("resultado")
     return redirect('/login')
-
-
-
-
 
 #3_/salir: Borra todos los datos de la sesión 
 
