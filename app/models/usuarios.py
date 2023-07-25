@@ -3,6 +3,7 @@ import os
 from app.config.mysqlconnection import connectToMySQL
 from flask import flash
 
+DB = "db_video"
 SEGURA_REGEX = re.compile(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$')
 
 class Usuario:
@@ -12,7 +13,7 @@ class Usuario:
         self.nombre = data.get('nombre')
         self.apellido = data.get('apellido')
         self.email = data.get('email')
-        self.username = data.get('username')
+        self.nickname = data.get('nickname')
         self.password = data.get('password')
 
 
@@ -33,7 +34,7 @@ class Usuario:
         todos_los_datos = []
 
         sql = """
-        SELECT nombre,apellido,username,email FROM usuarios;
+        SELECT nombre,apellido,nickname,email FROM usuarios;
         """
         result = connectToMySQL(os.getenv("BASE_DE_DATOS")).query_db(sql);
         for fila in result:
@@ -42,12 +43,12 @@ class Usuario:
         return todos_los_datos
 
     def crear(self):
-        sql = "INSERT INTO usuarios (nombre,apellido,email,username, password) VALUES (%(nombre)s,%(apellido)s,%(username)s, %(email)s, %(password)s);"
+        sql = "INSERT INTO usuarios (nombre,apellido,email,nickname, password) VALUES (%(nombre)s,%(apellido)s,%(nickname)s, %(email)s, %(password)s);"
         data = {
             'nombre': self.nombre,
             'email': self.email,
             'apellido': self.apellido,
-            'username': self.username,
+            'nickname': self.nickname,
             'password': self.password,
         }
         self.id = connectToMySQL(os.getenv("BASE_DE_DATOS")).query_db(sql, data)
@@ -56,7 +57,7 @@ class Usuario:
 
     @classmethod
     def save(cls, data):
-        sql = "INSERT INTO usuarios (nombre, apellido,email,username, password) VALUES (%(nombre)s, %(apellido)s,%(username)s,%(email)s, %(password)s);"
+        sql = "INSERT INTO usuarios (nombre, apellido,email,nickname, password) VALUES (%(nombre)s, %(apellido)s,%(nickname)s,%(email)s, %(password)s);"
         id = connectToMySQL(os.getenv("BASE_DE_DATOS")).query_db(sql, data)
         print("ID:", id)
         resultado = None
@@ -69,7 +70,7 @@ class Usuario:
         todos_los_datos = []
 
         sql = """
-        SELECT nombre,apellido,username,email FROM usuarios;
+        SELECT nombre,apellido,nickname,email FROM usuarios;
         """
         result = connectToMySQL(os.getenv("BASE_DE_DATOS")).query_db(sql,data)
         for fila in result:
@@ -80,7 +81,7 @@ class Usuario:
     @classmethod
     def get(cls, id):
         sql = """
-        SELECT nombre,apellido,username, email FROM usuarios;
+        SELECT nombre,apellido,nickname, email FROM usuarios;
         """
         data = {
             'id': id
@@ -93,7 +94,7 @@ class Usuario:
     @classmethod
     def get_by_email(cls, email):
         sql = """
-        SELECT id, nombre, apellido,email,username, password FROM usuarios where email = %(email)s;
+        SELECT id, nombre, apellido,email,nickname, password FROM usuarios where email = %(email)s;
         """
         data = {
             'email': email

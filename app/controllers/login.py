@@ -33,7 +33,7 @@ def procesar_login():
         "email": usuario_encontrado.email,
         "apellido": usuario_encontrado.apellido,
         "nombre": usuario_encontrado.nombre,
-        "username": usuario_encontrado.username,
+        "nickname": usuario_encontrado.nickname,
         "password": usuario_encontrado.password,
     }
 
@@ -45,19 +45,7 @@ def procesar_login():
         flash('Existe un error en tu correo o contraseña', 'danger')
         return redirect('/login')
 
-    return redirect('/dashboard')
-
-
-@app.route('/detalle')
-def detalle():
-    if 'usuario' not in session:
-        return redirect('/login')
-    data = {
-        'usuario_id': session["usuario"]["usuario_id"],
-    }
-    otros_usuario = Usuario.get_otros_usuarios(data)
-    return render_template('dashboard.html', otros_usuario=otros_usuario)
-
+    return redirect('/videos')
 
 #2.1_/procesar_registro: Procesa el formulario de registro enviado por POST
 
@@ -77,7 +65,7 @@ def procesar_registro():
         'nombre': request.form['nombre'],
         'apellido': request.form['apellido'],
         'email': request.form['email'],
-        'username': request.form['username'],
+        'nickname': request.form['nickname'],
         'password': password_hash,
     }
     existe_usuario = Usuario.get_by_email(request.form['email'])
