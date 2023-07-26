@@ -12,6 +12,15 @@ class Video:
         self.duracion = video["duracion"]
         self.video = video["video"]
     
+    @classmethod 
+    def get_all_by_user(cls, data):
+        query = "SELECT * from"
+        videos = []
+        results = connectToMySQL(DB).query_db(query,data)
+        for video in results:
+            videos.append(cls(video))
+        return videos
+
     @classmethod
     def get_all(cls):
         query = "SELECT * from videos;"
@@ -35,9 +44,8 @@ class Video:
         return videos
 
     @classmethod
-    def get_by_id(cls, video_id):
+    def get_by_id(cls, data):
 
-        data = {"id": video_id}
         query = "SELECT * FROM videos WHERE id = %(id)s;"
         result = connectToMySQL(DB).query_db(query,data)
         videos = []

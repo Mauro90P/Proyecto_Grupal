@@ -17,7 +17,7 @@ def videos():
 #buscador
 @app.route("/search", methods=["POST"])
 def search():
-   
+
     videos = Video.get_by_video(request.form.get("video"))
     print(videos)
     return render_template("menu.html", videos=videos)
@@ -43,7 +43,7 @@ def carrito_add():
                     actualizar = True
             if not actualizar:
                 datos.append({"id": id,
-                              "cantidad": cantidad})
+                            "cantidad": cantidad})
             resp = make_response(redirect(url_for('carrito')))
             resp.set_cookie('galleta',json.dumps(datos))
             print(datos)
@@ -51,20 +51,13 @@ def carrito_add():
 
 @app.route('/carrito')
 def carrito():
-    try:
-        datos = json.loads(request.cookies.get('galleta'))
-    except:
-        datos = []
-    videos = []
-    total = 0
-    for video in datos:
-        videos = videos + Video.get_by_id(video['id'])
-       
+    
+    data = {"id": session['usuario']["usuario_id"]}
 
-    for video in videos:
-        total = total + int(video.duracion)
-    print(total)
-    return render_template("carrito.html", datos=datos, videos=videos, total = format(total, ',d'))
+    videos = Video.get_all_by_user(data)
+
+
+    return render_template("carrito.html", videos=videos)
 
 @app.route('/carrito_delete/<id>')
 

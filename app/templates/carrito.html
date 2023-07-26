@@ -13,7 +13,7 @@
 <body>
         <nav class="navbar navbar-light bg-light justify-content-between">
         <div class="container">
-       
+
           <a href="/"><img class="logotipo" src="/static/img/banco.png" alt="BANCO DELIVERY" style="width: 150px;"></a>
             
             <form action="/search" method="post"  class="form-inline d-flex gap-2">
@@ -21,13 +21,13 @@
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
           
-             
-             <a href="/videos" style="text-decoration: none;">Inicio</a>
+          
+            <a href="/videos" style="text-decoration: none;">Inicio</a>
             
         </div>
           
     </nav>
-   <div class="container">
+  <div class="container">
     <h1 class="text-primary-emphasis">MIS VIDEOS</h1>
     <table class="table table-hover">
       <thead>
@@ -43,7 +43,7 @@
 
         <tr>
           <td class="video-image-thumb active" style="width: 400px; height: 400px; display: grid; place-items: center;">
-            <a href="/showvideo/{{videos.id}}"><video width="200px" height="200px" controls>
+            <a href="/showvideo/{{video.id}}"><video width="200px" height="200px" controls>
             <source src="{{ video.video }}" type="video/mp4">
             Tu navegador no admite el elemento de video.
         </video></a></td>
@@ -56,6 +56,6 @@
       </tbody>
     </table>
   </div>
-   
+
 </body>
 </html>
