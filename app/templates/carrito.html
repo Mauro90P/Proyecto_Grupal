@@ -39,13 +39,17 @@
         </tr>
       </thead>
       <tbody>
-        {% for producto in productos %}
+        {% for video in videos %}
 
         <tr>
-          <td><a href="/showproduct/{{producto.id}}"><img src="{{producto.imagen}}" width="80px"></a></td>
-          <td>{{producto.producto}}</td>
-          <td>{{producto.precio}} soles</td>
-          <td><a href="/carrito_delete/{{producto.id}}">Eliminar</a></td>
+          <td class="video-image-thumb active" style="width: 400px; height: 400px; display: grid; place-items: center;">
+            <a href="/showvideo/{{videos.id}}"><video width="200px" height="200px" controls>
+            <source src="{{ video.video }}" type="video/mp4">
+            Tu navegador no admite el elemento de video.
+        </video></a></td>
+          <td>{{video.duracion}}</td>
+          <td>{{video.duracion}} soles</td>
+          <td><a href="/carrito_delete/{{videos.id}}">Eliminar</a></td>
         </tr>
         {% endfor %}
 

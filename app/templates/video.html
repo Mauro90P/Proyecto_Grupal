@@ -41,14 +41,17 @@
         <div class="col-12">
 
         </div>
-        <div class="col-12 product-image-thumbs">
-        <div class="product-image-thumb active" style="width: 400px; height: 400px; display: grid; place-items: center;"><img src="{{video.video}}" alt="nombre Video" width="350px"></div>
+        <div class="col-12 video-image-thumbs">
+        <div class="video-image-thumb active" style="width: 400px; height: 400px; display: grid; place-items: center;"><video width="200px" height="200px" controls>
+          <source src="{{ video.video }}" type="video/mp4">
+          Tu navegador no admite el elemento de video.
+      </video></div>
 
         </div>
         </div>
         <div class="col-12 col-sm-6">
-        <h3 class="my-3">{{videos.video}}</h3>
-        <p style="text-align: justify;">{{videos.descripcion}}</p>
+        <h3 class="my-3">{{video.nombre}}</h3>
+        <p style="text-align: justify;">{{video.duracion}}</p>
         <hr>
         
         <form action="/carrito_add" method="post">

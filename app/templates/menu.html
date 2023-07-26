@@ -42,10 +42,13 @@
           
             <div class="col-md-2 mb-3 d-grid align-items-center rounded">
                 <div style="width: 200px; height: 200px; display: grid;place-items: center;">
-                <img src="{{producto.imagen}}" width="200px"/>
+                    <video width="200px" height="200px" controls>
+                        <source src="{{ video.video }}" type="video/mp4">
+                        Tu navegador no admite el elemento de video.
+                    </video>
                 </div>
-                <a href="/showproduct/{{producto.id}}" class="text-primary" style="text-decoration: none; font-size: 20px;">{{video.video}}</a>
-                <p style="color:rgb(214, 43, 43); font-size:large;font-weight: bold;">s/. {{video.precio}} soles</p>
+                <a href="/showvideo/{{video.id}}" class="text-primary" style="text-decoration: none; font-size: 20px;">{{video.nombre}}</a>
+                <p style="color:rgb(214, 43, 43); font-size:large;font-weight: bold;">Duracion: {{video.duracion}} minutos</p>
             </div>
             {% endfor %}
      

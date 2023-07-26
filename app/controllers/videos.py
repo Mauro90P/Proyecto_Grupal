@@ -62,7 +62,7 @@ def carrito():
        
 
     for video in videos:
-        total = total + int(video.precio)
+        total = total + int(video.duracion)
     print(total)
     return render_template("carrito.html", datos=datos, videos=videos, total = format(total, ',d'))
 

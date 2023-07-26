@@ -5,30 +5,13 @@ from flask import flash
 DB = "db_video"
 
 class Video:
-    def __init__(self, data):
-        self.id = data.get["id"]
-        self.codigo = data.get["codigo"]
-        self.nombre = data.get["nombre"]
-        self.duracion = data.get["duracion"]
-        self.video = data.get["video"]
-        self.usuario_id = data.get('usuario_id')
-        self.usuario = None
-
+    def __init__(self, video):
+        self.id = video["id"]
+        self.codigo = video["codigo"]
+        self.nombre = video["nombre"]
+        self.duracion = video["duracion"]
+        self.video = video["video"]
     
-    @classmethod
-    def crear(self):
-        sql = f"INSERT INTO videos (codigo, nombre, duracion, video, usuario_id) VALUES (%(codigo)s, %(nombre)s, %(duracion)s,%(video)s,%(usuario_id)s,NOW(),NOW());"
-        data = {
-            'codigo': self.codigo,
-            'nombre': self.nombre,
-            'duracion': self.duracion,
-            'video': self.video,
-            'usuario_id': self.usuario_id
-        }
-        self.id = connectToMySQL(os.getenv("BASE_DE_DATOS")).query_db(sql, data)
-        return self
-
-
     @classmethod
     def get_all(cls):
         query = "SELECT * from videos;"
@@ -55,7 +38,7 @@ class Video:
     def get_by_id(cls, video_id):
 
         data = {"id": video_id}
-        query = "SELECT * FROM video WHERE id = %(id)s;"
+        query = "SELECT * FROM videos WHERE id = %(id)s;"
         result = connectToMySQL(DB).query_db(query,data)
         videos = []
         for video in result:
