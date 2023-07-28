@@ -11,8 +11,8 @@ class Usuario:
         self.id = data.get('id', 0)
         self.nombre = data.get('nombre')
         self.apellido = data.get('apellido')
-        self.email = data.get('email')
         self.username = data.get('username')
+        self.email = data.get('email')
         self.password = data.get('password')
 
 
@@ -42,12 +42,12 @@ class Usuario:
         return todos_los_datos
 
     def crear(self):
-        sql = "INSERT INTO usuarios (nombre,apellido,email,username, password) VALUES (%(nombre)s,%(apellido)s,%(username)s, %(email)s, %(password)s);"
+        sql = "INSERT INTO usuarios (nombre,apellido,username,email, password) VALUES (%(nombre)s,%(apellido)s,%(username)s, %(email)s, %(password)s);"
         data = {
             'nombre': self.nombre,
-            'email': self.email,
             'apellido': self.apellido,
             'username': self.username,
+            'email': self.email,
             'password': self.password,
         }
         self.id = connectToMySQL(os.getenv("BASE_DE_DATOS")).query_db(sql, data)
@@ -56,7 +56,7 @@ class Usuario:
 
     @classmethod
     def save(cls, data):
-        sql = "INSERT INTO usuarios (nombre, apellido,email,username, password) VALUES (%(nombre)s, %(apellido)s,%(username)s,%(email)s, %(password)s);"
+        sql = "INSERT INTO usuarios (nombre, apellido,username, email,password) VALUES (%(nombre)s, %(apellido)s,%(username)s,%(email)s, %(password)s);"
         id = connectToMySQL(os.getenv("BASE_DE_DATOS")).query_db(sql, data)
         print("ID:", id)
         resultado = None
@@ -93,7 +93,7 @@ class Usuario:
     @classmethod
     def get_by_email(cls, email):
         sql = """
-        SELECT id, nombre, apellido,email,username, password FROM usuarios where email = %(email)s;
+        SELECT id, nombre, apellido,username,email, password FROM usuarios where email = %(email)s;
         """
         data = {
             'email': email

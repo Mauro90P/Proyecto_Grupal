@@ -31,9 +31,10 @@ CREATE TABLE `usuarios` (
   `username` varchar(80) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `usuarioscol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +43,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Mauricio','Pardo','mauriciopardo.figueroa@gmail.com','Mauro','$2b$12$fPL0hs5kZ3UiYVnsRlM8meckELroBmSHD8fALQqoQjZQglVwUD9By'),(2,'MANUEL','CONTRERAS','MARCOS@GMAIL.COM','MANU','$2b$12$6E3nuqTWjhKzPdmwIVY9aOq4f2UaBa6Y.o6wOIDRN9QRtWlKx53Bm');
+INSERT INTO `usuarios` VALUES (6,'Mauricio','Pardo','Mauro','mauriciopardo.figueroa@gmail.com','$2b$12$5BwHMOPzSLLD6LBT/G908.3Nzn47WJh7Hu7J1FcKsyfYF4xEXndi.',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,12 +56,14 @@ DROP TABLE IF EXISTS `videos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `videos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre_video` varchar(255) NOT NULL,
-  `duracion` varchar(255) DEFAULT NULL,
-  `estrella` varchar(255) DEFAULT NULL,
-  `estado` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `nombre_video` varchar(255) DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `url_video` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `url_video_UNIQUE` (`url_video`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,6 +72,7 @@ CREATE TABLE `videos` (
 
 LOCK TABLES `videos` WRITE;
 /*!40000 ALTER TABLE `videos` DISABLE KEYS */;
+INSERT INTO `videos` VALUES (1,'prueba',NULL,'https://www.youtube.com/watch?v=-FFnCf4VkYM','2023-07-28 00:31:03','2023-07-28 00:31:03'),(2,'CURSO DE JAVA FULL',NULL,'https://www.youtube.com/watch?v=L1oMLsiMusQ&list=PLyvsggKtwbLX9LrDnl1-K6QtYo7m0yXWB','2023-07-28 01:22:27','2023-07-28 01:22:27'),(5,'CURSO DE SQL 2023',NULL,'https://www.youtube.com/watch?v=DFg1V-rO6Pg','2023-07-28 01:29:17','2023-07-28 01:29:17'),(7,'CURSO DE CUCUMBER 2023',NULL,'https://www.youtube.com/watch?v=G1DOhBMIFkI&list=PLHBdlNTbF1h5XwqAc18Z5xcJpbO6rq6mm','2023-07-28 01:42:07','2023-07-28 01:42:07'),(8,'CURSO DE ORACLE FULL',NULL,'https://www.youtube.com/watch?v=ibOzwFRm32w&list=PLiLpmqwkwkCt0QeXD8j7BwIoOaBGBRrZC','2023-07-28 02:39:51','2023-07-28 02:39:51'),(9,'SDDS',NULL,'SSSSDSD','2023-07-28 02:53:01','2023-07-28 02:53:01'),(10,'PRUEBA 3',NULL,'https://www.youtube.com/watch?v=z36_kk21J9M&list=PLiLpmqwkwkCt0QeXD8j7BwIoOaBGBRrZC&index=4','2023-07-28 03:13:31','2023-07-28 03:13:31');
 /*!40000 ALTER TABLE `videos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -81,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-23 22:27:36
+-- Dump completed on 2023-07-27 23:34:48

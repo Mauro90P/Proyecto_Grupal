@@ -1,38 +1,8 @@
-<!doctype html>
-<html class="no-js is_dark" lang="zxx">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Course Dark| Edurock - Education LMS Template</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block titulo %}login de Cursos Online{% endblock %}
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
-    <!-- Place favicon.ico in the root directory -->
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/icofont.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-
-
-    <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-            document.documentElement.classList.add("is_dark");
-        }
-        if (localStorage.getItem("theme-color") === "light") {
-            document.documentElement.classList.remove("is_dark");
-        } 
-    </script>
-
-</head>
+{% block contenido %}
 
 <body class="body__wrapper">
     <!-- pre loader area start -->
@@ -69,9 +39,6 @@
     <!-- Dark/Light area end -->
 
     <main class="main_wrapper">
-        <!-- topbar__section__stert -->
-        <!-- topbar__section__end -->
-        <!-- headar section start -->
         <header>
             <div class="headerarea headerarea__3 header__sticky header__area">
                 <div class="container desktop__menu__wrapper">
@@ -80,10 +47,21 @@
                             <div class="headerarea__left">
                                 <div class="headerarea__left__logo">
 
-                                    <a href="#"><img src="img/logo/logo4.png" alt="logo"
-                                            style="width: 130px;height: 130px;"></a>
+                                    <a><img src="{{url_for('static', filename='img/logo/logo_2.png') }}" alt="logo"
+                                            style="width:100px;height: 100px;"></a>
                                 </div>
 
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-7 main_menu_wrap">
+                            <div class="headerarea__main__menu">
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6">
+                            <div class="headerarea__right">
+                                <div class="headerarea__login">
+                                    <a href="/home" style="color: green;">Back</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -93,12 +71,12 @@
                 <div class="row align-items-center">
                     <div class="col-6">
                         <div class="mobile-logo">
-                            <a class="logo__dark" href="#"><img src="img/logo/logo4.png" alt="logo"></a>
+                            <a><img src="{{url_for('static', filename='img/logo/logo_2.png') }}" alt="logo"
+                                    style="width:100px;height: 100px;"></a>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="header-right-wrap">
-
                             <div class="mobile-off-canvas">
                                 <a class="mobile-aside-button" href="#"><i class="icofont-navigation-menu"></i></a>
                             </div>
@@ -106,9 +84,6 @@
                     </div>
                 </div>
             </div>
-
-
-
         </header>
         <!-- header section end -->
 
@@ -140,24 +115,7 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- <div class="single-mobile-curr-lang">
-                        <a class="mobile-account-active" href="#">My Account <i class="icofont-thin-down"></i></a>
-                        <div class="lang-curr-dropdown account-dropdown-active">
-                            <ul>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="login.html">Creat Account</a></li>
-                                <li><a href="login.html">My Account</a></li>
-                            </ul>
-                        </div>
-                    </div> -->
                 </div>
-                <!-- <div class="mobile-social-wrap">
-                    <a class="facebook" href="#"><i class="icofont icofont-facebook"></i></a>
-                    <a class="twitter" href="#"><i class="icofont icofont-twitter"></i></a>
-                    <a class="pinterest" href="#"><i class="icofont icofont-pinterest"></i></a>
-                    <a class="instagram" href="#"><i class="icofont icofont-instagram"></i></a>
-                    <a class="google" href="#"><i class="icofont icofont-youtube-play"></i></a>
-                </div> -->
             </div>
         </div>
         <!-- Mobile Menu end Here -->
@@ -191,10 +149,14 @@
                 </div>
             </div>
             <div class="shape__icon__2">
-                <img class=" shape__icon__img shape__icon__img__1" src="img/herobanner/herobanner__1.png" alt="photo">
-                <img class=" shape__icon__img shape__icon__img__2" src="img/herobanner/herobanner__2.png" alt="photo">
-                <img class=" shape__icon__img shape__icon__img__3" src="img/herobanner/herobanner__3.png" alt="photo">
-                <img class=" shape__icon__img shape__icon__img__4" src="img/herobanner/herobanner__5.png" alt="photo">
+                <img class=" shape__icon__img shape__icon__img__1"
+                    src="{{url_for('static', filename='img/herobanner/herobanner__1.png')}}" alt="photo">
+                <img class=" shape__icon__img shape__icon__img__2"
+                    src="{{url_for('static', filename='img/herobanner/herobanner__2.png')}}" alt="photo">
+                <img class=" shape__icon__img shape__icon__img__3"
+                    src="{{url_for('static', filename='img/herobanner/herobanner__3.png')}}" alt="photo">
+                <img class=" shape__icon__img shape__icon__img__4"
+                    src="{{url_for('static', filename='img/herobanner/herobanner__5.png')}}" alt="photo">
             </div>
         </div>
         <!-- breadcrumbarea__section__end-->
@@ -252,7 +214,7 @@
                                 <div class="loginarea__wraper">
                                     <div class="login__heading">
                                         <h5 class="login__title">Registro</h5>
-                                        <p class="login__description">Tienes Cuenta, pudes ir al? <a href="#"
+                                        <p class="login__description">Tienes Cuenta, pudes ir al ? <a href="#"
                                                 data-bs-toggle="modal" data-bs-target="#registerModal">Log In</a></p>
                                     </div>
 
@@ -329,10 +291,14 @@
                 </div>
 
                 <div class=" login__shape__img educationarea__shape_image">
-                    <img class="hero__shape hero__shape__1" src="img/education/hero_shape2.png" alt="Shape">
-                    <img class="hero__shape hero__shape__2" src="img/education/hero_shape3.png" alt="Shape">
-                    <img class="hero__shape hero__shape__3" src="img/education/hero_shape4.png" alt="Shape">
-                    <img class="hero__shape hero__shape__4" src="img/education/hero_shape5.png" alt="Shape">
+                    <img class="hero__shape hero__shape__1"
+                        src="{{url_for('static', filename='img/education/hero_shape2.png')}}" alt="Shape">
+                    <img class="hero__shape hero__shape__2"
+                        src="{{url_for('static', filename='img/education/hero_shape3.png')}}" alt="Shape">
+                    <img class="hero__shape hero__shape__3"
+                        src="{{url_for('static', filename='img/education/hero_shape4.png')}}" alt="Shape">
+                    <img class="hero__shape hero__shape__4"
+                        src="{{url_for('static', filename='img/education/hero_shape5.png')}}" alt="Shape">
                 </div>
 
 
@@ -347,8 +313,8 @@
                         <div class="row">
                             <div class="col-xl-3 col-lg-3">
                                 <div class="copyright__logo">
-                                    <a href="/"><img src="img/logo/logo4.png" alt="logo"
-                                            style="width: 150px; height: 150px;"></a>
+                                    <a href="/"><img src="{{url_for('static', filename='img/logo/logo4.png')}}"
+                                            alt="logo" style="width: 150px; height: 150px;"></a>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
@@ -374,37 +340,6 @@
             </div>
             <!-- footer__section__end -->
     </main>
-
-    <!-- JS here -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/modernizr-3.5.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/jquery-3.6.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/isotope.pkgd.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/slick.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.meanmenu.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/ajax-form.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.scrollUp.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.counterup.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/plugins.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/modernizr-3.5.0.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-    <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-            document.getElementById("light--to-dark-button")?.classList.add("dark--mode");
-        }
-        if (localStorage.getItem("theme-color") === "light") {
-            document.getElementById("light--to-dark-button")?.classList.remove("dark--mode");
-        } 
-    </script>
-
 </body>
 
-</html>
+{% endblock %}

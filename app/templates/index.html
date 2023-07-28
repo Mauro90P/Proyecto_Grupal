@@ -3,15 +3,6 @@
 {% block titulo %}Informacion del Usuario{% endblock %}
 
 {% block contenido %}
-<script>
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("is_dark");
-    }
-    if (localStorage.getItem("theme-color") === "light") {
-        document.documentElement.classList.remove("is_dark");
-    } 
-</script>
 
 <body class="body__wrapper">
     <!-- pre loader area start -->
@@ -52,7 +43,7 @@
 
         <!-- header section start -->
         <header>
-            <div class="headerarea transparent__header header__sticky header__area">
+            <div class="headerarea headerarea__3 header__sticky header__area">
                 <div class="container desktop__menu__wrapper">
                     <div class="row">
                         <div class="col-xl-2 col-lg-2 col-md-6">
@@ -66,34 +57,45 @@
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-7 main_menu_wrap">
+                            <div class="headerarea__main__menu">
+                                <nav>
+                                    <ul>
+                                        <li><a class="headerarea__has__dropdown" href="/index">Home</a>
+                                        </li>
+                                        <li><a class="headerarea__has__dropdown" href="/course">Cursos</a>
+                                        </li>
+                                        <li><a class="headerarea__has__dropdown" href="#">Portal Instructor</a>
+                                            <ul class="headerarea__submenu">
+                                                <li><a href="/instructor">Perfíl Instructor</a></li>
+                                                <li><a href="/biblioteca">Carga de Curso</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-6">
                             <div class="headerarea__right">
                                 <div class="headerarea__login">
-                                    <a href="login.html">Login</a>
+                                    <a href="/salir" style="color: green;">SALIR</a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-
-
-                <div class="container-fluid mob_menu_wrapper">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <div class="mobile-logo">
-                                <a class="logo__dark"><img src="{{url_for('static', filename='img/logo/logo_4.png') }}"
-                                        alt="logo"></a>
-                            </div>
+            </div>
+            <div class="container-fluid mob_menu_wrapper">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <div class="mobile-logo">
+                            <a><img src="{{url_for('static', filename='img/logo/logo_2.png') }}" alt="logo"
+                                    style="width:100px;height: 100px;"></a>
                         </div>
-                        <div class="col-6">
-                            <div class="header-right-wrap">
-
-                                <div class="mobile-off-canvas">
-                                    <a class="mobile-aside-button" href="#"><i class="icofont-navigation-menu"></i></a>
-                                </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="header-right-wrap">
+                            <div class="mobile-off-canvas">
+                                <a class="mobile-aside-button" href="#"><i class="icofont-navigation-menu"></i></a>
                             </div>
                         </div>
                     </div>
@@ -133,7 +135,8 @@
                                 <img class="hero__shape hero__shape__4"
                                     src="{{url_for('static', filename='img/education/hero_shape5.png') }}" alt="Shape">
                                 <img class="education__img__4"
-                                    src="{{url_for('static', filename='img/education__3.png') }}" alt="education">
+                                    src="{{url_for('static', filename='img/education/education__3.png') }}"
+                                    alt="education">
                             </div>
                         </div>
                     </div>
@@ -149,7 +152,8 @@
                                 <img class="aboutimg__1" src="{{url_for('static', filename='img/about/about_8.png') }}"
                                     alt="aboutimg">
                                 <img class="aboutimg__2"
-                                    src="{{url_for('static', filename='img//about/about_1.jpeg') }}" alt="aboutimg">
+                                    src="{{url_for('static', filename='img//about/about_1.jpeg') }}"
+                                    style="width: 500px;height: 500px;" alt="aboutimg">
                             </div>
                         </div>
                     </div>
@@ -634,7 +638,7 @@
                         <div class="gridarea__wraper">
                             <div class="gridarea__img">
                                 <a href="https://www.youtube.com/watch?v=M26iIqmqWkI&t=414s"><img
-                                        src="{{url_for('static', filename='img//grid/grid_1.png') }}" alt="grid"></a>
+                                        src="{{url_for('static', filename='img/grid/grid_1.png') }}" alt="grid"></a>
                                 <div class="gridarea__small__button">
                                     <div class="grid__badge">Data & Tech</div>
                                 </div>
@@ -664,16 +668,15 @@
 
                                 </div>
                                 <div class="gridarea__bottom">
-
                                     <a href="instructor-details.html">
                                         <div class="gridarea__small__img">
-                                            <img src="img/grid/grid_small_1.jpg" alt="grid">
+                                            <img src="{{url_for('static', filename='img/grid/grid_small_1.jpg') }}"
+                                                alt="grid">
                                             <div class="gridarea__small__content">
-                                                <h6>Micle Jhon</h6>
+                                                <h6>Mauricio Pardo</h6>
                                             </div>
                                         </div>
                                     </a>
-
                                     <div class="gridarea__star">
                                         <i class="icofont-star"></i>
                                         <i class="icofont-star"></i>
@@ -690,7 +693,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter2 filter3">
                         <div class="gridarea__wraper">
                             <div class="gridarea__img">
-                                <img src="{{url_for('static', filename='img//grid/grid_1.png') }}" alt="grid">
+                                <img src="{{url_for('static', filename='img/grid/grid_1.png') }}" alt="grid">
                                 <div class="gridarea__small__button">
                                     <div class="grid__badge blue__color">Mechanical</div>
                                 </div>
@@ -722,9 +725,10 @@
                                 <div class="gridarea__bottom">
                                     <a href="instructor-details.html">
                                         <div class="gridarea__small__img">
-                                            <img src="img/grid/grid_small_2.jpg" alt="grid">
+                                            <img src="{{url_for('static', filename='img/grid/grid_small_2.jpg') }}"
+                                                alt="grid">
                                             <div class="gridarea__small__content">
-                                                <h6>Rinis Jhon</h6>
+                                                <h6>Julio Zapata </h6>
                                             </div>
                                         </div>
                                     </a>
@@ -744,7 +748,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter4 filter5">
                         <div class="gridarea__wraper">
                             <div class="gridarea__img">
-                                <a href="#"><img src="{{url_for('static', filename='img//grid/grid_1.png') }}"
+                                <a href="#"><img src="{{url_for('static', filename='img/grid/grid_1.png') }}"
                                         alt="grid"></a>
                                 <div class="gridarea__small__button">
                                     <div class="grid__badge pink__color">Development</div>
@@ -778,7 +782,8 @@
 
                                     <a href="instructor-details.html">
                                         <div class="gridarea__small__img">
-                                            <img src="img/grid/grid_small_3.jpg" alt="grid">
+                                            <img src="{{url_for('static', filename='img/grid/grid_small_3.jpg') }}"
+                                                alt="grid">
                                             <div class="gridarea__small__content">
                                                 <h6>Micle Jhon</h6>
                                             </div>
@@ -791,7 +796,7 @@
                                         <i class="icofont-star"></i>
                                         <i class="icofont-star"></i>
                                         <i class="icofont-star"></i>
-                                        <span>(44)</span>
+                                        <span>(40)</span>
                                     </div>
                                 </div>
                             </div>
@@ -801,7 +806,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter4">
                         <div class="gridarea__wraper">
                             <div class="gridarea__img">
-                                <a href="#"><img src="{{url_for('static', filename='img//grid/grid_1.png') }}"
+                                <a href="#"><img src="{{url_for('static', filename='img/grid/grid_1.png') }}"
                                         alt="grid"></a>
                                 <div class="gridarea__small__button">
                                     <div class="grid__badge green__color">Ui & UX Design</div>
@@ -835,9 +840,10 @@
 
                                     <a href="instructor-details.html">
                                         <div class="gridarea__small__img">
-                                            <img src="img/grid/grid_small_4.jpg" alt="grid">
+                                            <img src="{{url_for('static', filename='img/grid/grid_small_4.jpg') }}"
+                                                alt="grid">
                                             <div class="gridarea__small__content">
-                                                <h6>Micle Robin</h6>
+                                                <h6>Martin Robin</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -847,8 +853,8 @@
                                         <i class="icofont-star"></i>
                                         <i class="icofont-star"></i>
                                         <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <span>(44)</span>
+                                        <i class="icofont-star dark__color"></i>
+                                        <span>(30)</span>
                                     </div>
                                 </div>
                             </div>
@@ -858,7 +864,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter1 filter3">
                         <div class="gridarea__wraper">
                             <div class="gridarea__img">
-                                <a href="#"><img src="{{url_for('static', filename='img//grid/grid_1.png') }}"
+                                <a href="#"><img src="{{url_for('static', filename='img/grid/grid_1.png') }}"
                                         alt="grid"></a>
                                 <div class="gridarea__small__button">
                                     <div class="grid__badge orange__color">Data & Tech</div>
@@ -892,9 +898,10 @@
 
                                     <a href="instructor-details.html">
                                         <div class="gridarea__small__img">
-                                            <img src="img/grid/grid_small_5.jpg" alt="grid">
+                                            <img src="{{url_for('static', filename='img/grid/grid_small_5.jpg') }}"
+                                                alt="grid">
                                             <div class="gridarea__small__content">
-                                                <h6>Micle Robin</h6>
+                                                <h6>Manuel Robles</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -905,7 +912,7 @@
                                         <i class="icofont-star"></i>
                                         <i class="icofont-star"></i>
                                         <i class="icofont-star"></i>
-                                        <span>(44)</span>
+                                        <span>(42)</span>
                                     </div>
                                 </div>
                             </div>
@@ -915,7 +922,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter5 filter2">
                         <div class="gridarea__wraper">
                             <div class="gridarea__img">
-                                <a href="#"><img src="{{url_for('static', filename='img//grid/grid_1.png') }}"
+                                <a href="#"><img src="{{url_for('static', filename='img/grid/grid_1.png') }}"
                                         alt="grid"></a>
                                 <div class="gridarea__small__button">
                                     <div class="grid__badge yellow__color">Big Data</div>
@@ -949,9 +956,10 @@
 
                                     <a href="instructor-details.html">
                                         <div class="gridarea__small__img">
-                                            <img src="img/grid/grid_small_5.jpg" alt="grid">
+                                            <img src="{{url_for('static', filename='img/grid/grid_small_5.jpg') }}"
+                                                alt="grid">
                                             <div class="gridarea__small__content">
-                                                <h6>Micle Robin</h6>
+                                                <h6>Marcelo Ruiz</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -993,7 +1001,8 @@
                         <div class="single__testimonial__wraper">
                             <div class="single__testimonial__inner">
                                 <div class="testimonial__img">
-                                    <img src="img/testimonial/testi_1.png" alt="testi">
+                                    <img src="{{url_for('static', filename='img/testimonial/testi_1.png') }}"
+                                        style="width: 150px; height: 150px; border-radius: 50px;" alt="testi">
                                     <div class="testimonial__name">
                                         <h6>Alberto Jerez</h6>
                                         <span>Full Stack Java</span>
@@ -1009,9 +1018,8 @@
                             </div>
 
                             <div class="testimonial__content">
-                                <p>The other hand we denounce with righteou indg ation men who are so beguiled and
-                                    demoraliz ed by the of the mo ment.Dislike men who are so beguiled and dems ed by
-                                    the charms of pleas ure of the moment. Lorem </p>
+                                <p>Los cursos son realmente muy buenos, tienen una dinamica muy facil de entender y los
+                                    docentes son muy calificados </p>
                             </div>
 
 
@@ -1021,7 +1029,8 @@
                         <div class="single__testimonial__wraper">
                             <div class="single__testimonial__inner">
                                 <div class="testimonial__img">
-                                    <img src="img/testimonial/testi_1.png" alt="testi">
+                                    <img src="{{url_for('static', filename='img/testimonial/testi_1.png') }}"
+                                        style="width: 150px; height: 150px; border-radius: 50px;" alt="testi">
                                     <div class="testimonial__name">
                                         <h6>Pablo Lopez</h6>
                                         <span>DBA</span>
@@ -1037,9 +1046,8 @@
                             </div>
 
                             <div class="testimonial__content">
-                                <p>The other hand we denounce with righteou indg ation men who are so beguiled and
-                                    demoraliz ed by the of the mo ment.Dislike men who are so beguiled and dems ed by
-                                    the charms of pleas ure of the moment. Lorem </p>
+                                <p>Los cursos son realmente muy buenos, tienen una dinamica muy facil de entender y los
+                                    docentes son muy calificados </p>
                             </div>
 
 
@@ -1049,7 +1057,8 @@
                         <div class="single__testimonial__wraper">
                             <div class="single__testimonial__inner">
                                 <div class="testimonial__img">
-                                    <img src="img/testimonial/testi_1.png" alt="testi">
+                                    <img src="{{url_for('static', filename='img/testimonial/testi_1.png') }}"
+                                        style="width: 150px; height: 150px; border-radius: 50px;" alt="testi">
                                     <div class="testimonial__name">
                                         <h6>Mauricio Pard</h6>
                                         <span>Ui/Ux Designer</span>
@@ -1065,9 +1074,8 @@
                             </div>
 
                             <div class="testimonial__content">
-                                <p>The other hand we denounce with righteou indg ation men who are so beguiled and
-                                    demoraliz ed by the of the mo ment.Dislike men who are so beguiled and dems ed by
-                                    the charms of pleas ure of the moment. Lorem </p>
+                                <p>Los cursos son realmente muy buenos, tienen una dinamica muy facil de entender y los
+                                    docentes son muy calificados </p>
                             </div>
 
 
@@ -1075,9 +1083,10 @@
                     </div>
                     <div class="col-xl-6 column__custom__class">
                         <div class="single__testimonial__wraper">
-                            <div class="single__testimonial__inner">
+                            <div class="single__testimonial__inner">s
                                 <div class="testimonial__img">
-                                    <img src="img/testimonial/testi_1.png" alt="testi">
+                                    <img src="{{url_for('static', filename='img/testimonial/testi_1.png') }}"
+                                        style="width: 150px; height: 150px; border-radius: 50px;" alt="testi">
                                     <div class="testimonial__name">
                                         <h6>Julio</h6>
                                         <span>Ui/Ux Designer</span>
@@ -1093,9 +1102,8 @@
                             </div>
 
                             <div class="testimonial__content">
-                                <p>The other hand we denounce with righteou indg ation men who are so beguiled and
-                                    demoraliz ed by the of the mo ment.Dislike men who are so beguiled and dems ed by
-                                    the charms of pleas ure of the moment. Lorem </p>
+                                <p>Los cursos son realmente muy buenos, tienen una dinamica muy facil de entender y los
+                                    docentes son muy calificados </p>
                             </div>
 
 
@@ -1130,42 +1138,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!-- footer__section__end -->
-
     </main>
-
-
-    <!-- JS here -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/modernizr-3.5.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/jquery-3.6.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/isotope.pkgd.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/slick.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.meanmenu.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/ajax-form.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.scrollUp.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.counterup.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/plugins.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/modernizr-3.5.0.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-            document.getElementById("light--to-dark-button")?.classList.add("dark--mode");
-        }
-        if (localStorage.getItem("theme-color") === "light") {
-            document.getElementById("light--to-dark-button")?.classList.remove("dark--mode");
-        } 
-    </script>
-
 </body>
 {% endblock %}
