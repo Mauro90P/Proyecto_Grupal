@@ -44,13 +44,13 @@ def carrito_add():
             if not actualizar:
                 datos.append({"id": id,
                             "cantidad": cantidad})
-            resp = make_response(redirect(url_for('carrito')))
+            resp = make_response(redirect(url_for('MIBIBLIOTECA')))
             resp.set_cookie('galleta',json.dumps(datos))
             print(datos)
             return resp
 
-@app.route('/carrito')
-def carrito():
+@app.route('/MIBIBLIOTECA')
+def MIBIBLIOTECA():
     try:
         datos = json.loads(request.cookies.get('galleta'))
     except:
@@ -76,6 +76,6 @@ def carrito_delete(id):
     for dato in datos:
         if dato["id"] != id:
             new_datos.append(dato)
-    resp = make_response(redirect(url_for('carrito')))
+    resp = make_response(redirect(url_for('MIBIBLIOTECA')))
     resp.set_cookie('galleta', json.dumps(new_datos))
     return resp

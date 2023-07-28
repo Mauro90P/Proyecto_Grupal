@@ -14,7 +14,7 @@
         <nav class="navbar navbar-light bg-light justify-content-between">
         <div class="container">
 
-          <a href="/"><img class="logotipo" src="/static/img/banco.png" alt="BANCO DELIVERY" style="width: 150px;"></a>
+          <a href="/"><img class="logotipo" src="/static/img/banco.png" alt="LOGO" style="width: 150px;"></a>
             
             <form action="/search" method="post"  class="form-inline d-flex gap-2">
               <input class="form-control" name="video" type="search" placeholder="Buscar Video" aria-label="Search" style="width: 500px;">
@@ -34,6 +34,7 @@
         <tr>
           <th>Video</th>
           <th>Nombre</th>
+          <th>Link</th>
           <th>Duracion</th>
           <th>Acción</th>
         </tr>
@@ -44,12 +45,13 @@
         <tr>
           <td><a href="/showvideo/{{video.id}}"><img src="{{video.video}}" width="80px"></a></td>
           <td>{{video.nombre}}</td>
-          <td>{{video.duracion}} soles</td>
+          <td>link</td>
+          <td>{{video.duracion}} minutos</td>
           <td><a href="/carrito_delete/{{video.id}}">Eliminar</a></td> 
         </tr>
 
         {% endfor %}
-        
+
       </tbody>
     </table>
   </div>

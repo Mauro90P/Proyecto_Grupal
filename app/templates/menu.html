@@ -14,7 +14,7 @@
         <nav class="navbar navbar-light bg-light justify-content-between">
         <div class="container">
     
-        <a href="/"> <img class="logotipo" src="/static/img/banco.png" alt="BANCO DELIVERY" style="width: 150px;"></a>
+        <a href="/"> <img class="logotipo" src="/static/img/banco.png" alt="LOGO" style="width: 150px;"></a>
             
             <form action="/search" method="post"  class="form-inline d-flex gap-2">
             <input class="form-control" name="video" type="search" placeholder="Buscar Video" aria-label="Search" style="width: 500px;">
@@ -24,7 +24,7 @@
             
             <a href="/videos" style="text-decoration: none;">Inicio</a>
             
-            <a href="/carrito" class="btn btn-primary"><img src="/static/img/carrito.png" alt="carrito" style="width: 30px;">MIS VIDEOS</a>
+            <a href="/MIBIBLIOTECA" class="btn btn-primary"><img src="/static/img/carrito.png" alt="carrito" style="width: 30px;">MIS VIDEOS</a>
             </div>
             <div class="d-flex" role="search">
                 <a class="btn btn-outline-success" href="/salir">Salir</a>
@@ -45,6 +45,7 @@
                     <img src="{{video.video}}" width="200px"/>
                 </div>
                 <a href="/showvideo/{{video.id}}" class="text-primary" style="text-decoration: none; font-size: 20px;">{{video.nombre}}</a>
+                <a>link</a>
                 <p style="color:rgb(214, 43, 43); font-size:large;font-weight: bold;">Duracion: {{video.duracion}} minutos</p>
             </div>
             {% endfor %}
