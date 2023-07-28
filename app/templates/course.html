@@ -159,6 +159,7 @@
 
                         </div>
 
+                        {% for video in videos %}
                         <div class="col-xl-12">
 
                             <div class="tab-content tab__content__wrapper" id="myTabContent">
@@ -171,7 +172,7 @@
                                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" data-aos="fade-up">
                                             <div class="gridarea__wraper gridarea__wraper__2">
                                                 <div class="gridarea__img">
-                                                    <a href="course.html"><img
+                                                    <a href="#"><img
                                                             src="{{url_for('static', filename='img/grid/grid_5.png') }}"
                                                             alt="grid"></a>
                                                     <div class="gridarea__small__button">
@@ -235,81 +236,80 @@
                                     </div>
                                 </div>
 
-
-                                <div class="tab-pane fade active show" id="projects__two" role="tabpanel"
-                                    aria-labelledby="projects__two">
-
-                                    <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list"
-                                        data-aos="fade-up">
-                                        <div class="gridarea__img">
-                                            <a href="course.html"><img
-                                                    src="{{url_for('static', filename='img/grid/grid_5.png') }}"
-                                                    alt="grid"></a>
-                                            <div class="gridarea__small__button">
-                                                <div class="grid__badge">Data & Tech</div>
-                                            </div>
-                                            <div class="gridarea__small__icon">
-                                                <a href="#"><i class="icofont-heart-alt"></i></a>
-                                            </div>
-
+                            
+                                <!-- Imagen become a product y todo eso del video   -->
+                        
+                        <div class="col-xl-12">
+                            <div class="tab-content tab__content__wrapper" id="myTabContent">
+                                <div class="tab-pane fade" id="projects__one" role="tabpanel"
+                                    aria-labelledby="projects__one">
+                                </div>
+                                <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list"
+                                    data-aos="fade-up">
+                                    <div class="gridarea__img">
+                                        <img src="{{video.video}}" width="200px"/>
+                                        <div class="gridarea__small__button">
+                                            <div class="grid__badge blue__color">Mechanical</div>
                                         </div>
-                                        <div class="gridarea__content">
-                                            <div class="gridarea__list">
-                                                <ul>
-                                                    <li>
-                                                        <i class="icofont-book-alt"></i> 23 Lesson
-                                                    </li>
-                                                    <li>
-                                                        <i class="icofont-clock-time"></i> 1 hr 30 min
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="gridarea__heading">
-                                                <h3><a href="course.html">Become a product Manager learn the
-                                                        skills & job.
-                                                    </a></h3>
-                                            </div>
-                                            <div class="gridarea__price">
-                                            </div>
-                                            <div class="gridarea__bottom">
-                                                <div class="gridarea__bottom__left">
-                                                    <a href="instructor.html">
-                                                        <div class="gridarea__small__img">
-                                                            <img src="{{url_for('static', filename='img/grid/grid_small_1.jpg') }}"
-                                                                alt="grid">
-                                                            <div class="gridarea__small__content">
-                                                                <h6>Rodrigo Lunas</h6>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="gridarea__star">
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <span>(44)</span>
-                                                    </div>
-                                                </div>
-                                                <div class="gridarea__details">
-                                                    <a href="course.html">Más Detalles
-                                                        <i class="icofont-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                        <div class="gridarea__small__icon">
+                                            <a href="#"><i class="icofont-heart-alt"></i></a>
                                         </div>
-                                        <table style="display: flex; justify-content: center;">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <a href="#" class="btn btn-danger">Eliminar</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
+                                    <div class="gridarea__content">
+                                        <div class="gridarea__list">
+                                            <ul>
+                                                <li>
+                                                    <i class="icofont-book-alt"></i> Lesson
+                                                </li>
+                                                <li>
+                                                    <i class="icofont-clock-time"></i> {{video.time}} minutos
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="gridarea__heading">
+                                            <h3><a href="/showvideo/{{video.id}}">{{ video.nombre_video }}</a></h3>
+                                        </div>
+                                        <div class="gridarea__price">
+                                        </div>
+                                        <div class="gridarea__bottom">
+                                            <div class="gridarea__bottom__left">
+                                                <a href="url_bd">
+                                                    <div class="gridarea__small__img">
+                                                        <img src="{{url_for('static', filename='img/grid/grid_small_1.jpg') }}"
+                                                            alt="grid">
+                                                        <div class="gridarea__small__content">
+                                                            <h4><a href="/showvideo/{{video.id}}" class="text-primary" style="text-decoration: none; font-size: 20px;"><a href="{{video.url_video}}" class="text-primary" style="text-decoration: none; font-size: 20px;">LINK DEL CURSO</a></h4>
+                                                            <h6>Jose Rios</h6>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <div class="gridarea__star">
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <span>(44)</span>
+                                                </div>
+                                            </div>
+                                            <div class="gridarea__details">
+                                                <a href="#">Mas Detalles
+                                                    <i class="icofont-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                    <td><a class="btn btn-secondary" style="background-color: red;" href="/carrito_delete/{{video.id}}">Eliminar</a></td> 
+                                                    </div>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
+                        </div>
+                        {% endfor %}
                             <div class="main__pagination__wrapper" data-aos="fade-up">
                                 <ul class="main__page__pagination">
                                     <li><a class="disable" href="#"><i class="icofont-double-left"></i></a></li>

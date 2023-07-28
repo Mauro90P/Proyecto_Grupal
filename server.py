@@ -1,5 +1,5 @@
 from app.controllers import login
-from app.controllers import video
+from app.controllers import videos
 from app.controllers import base
 #from app.controllers import videos
 

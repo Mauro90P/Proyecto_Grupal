@@ -144,6 +144,10 @@
                                                 <input type="text" class="form-control" id="inputURLVideo"
                                                     name="url_video">
                                             </div>
+                                            <div class="form-group">
+                                                <label for="inputtime">Duracion del video</label>
+                                                <input type="text" class="form-control" id="inputtime"
+                                                    name="time">
                                         </fieldset>
                                         <div class="form-group mt-4 text-center">
                                             <button type="submit" class="btn btn-primary">Subir</button>
@@ -151,7 +155,7 @@
                                     </form>
                                 </div>
                                 <div class="course__text">
-                                    <p>Mostrar 1–12 de 20 Resultado</p>
+                                    <p>Mostrar 1 a 12 de 20 Resultado</p>
                                 </div>
                                 <div class="course__icon">
                                     <ul class="nav property__team__tap" id="myTab" role="tablist">
@@ -172,7 +176,7 @@
                                 </div>
                             </div>
                         </div>
-                        {% for dato in data %}
+                        {% for video in videos %}
                         <div class="col-xl-12">
                             <div class="tab-content tab__content__wrapper" id="myTabContent">
                                 <div class="tab-pane fade" id="projects__one" role="tabpanel"
@@ -181,7 +185,7 @@
                                 <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list"
                                     data-aos="fade-up">
                                     <div class="gridarea__img">
-                                        <img src="{{url_for('static', filename='img/grid/grid_5.png') }}" alt="grid">
+                                        <img src="{{video.video}}" width="200px"/>
                                         <div class="gridarea__small__button">
                                             <div class="grid__badge blue__color">Mechanical</div>
                                         </div>
@@ -193,15 +197,15 @@
                                         <div class="gridarea__list">
                                             <ul>
                                                 <li>
-                                                    <i class="icofont-book-alt"></i> 23 Lesson
+                                                    <i class="icofont-book-alt"></i> Lesson
                                                 </li>
                                                 <li>
-                                                    <i class="icofont-clock-time"></i> 1 hr 30 min
+                                                    <i class="icofont-clock-time"></i> {{video.time}} minutos
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="gridarea__heading">
-                                            <h3><a href="">{{ dato.nombre_video }}</a></h3>
+                                            <h3><a href="/showvideo/{{video.id}}">{{ video.nombre_video }}</a></h3>
                                         </div>
                                         <div class="gridarea__price">
                                         </div>
@@ -212,6 +216,7 @@
                                                         <img src="{{url_for('static', filename='img/grid/grid_small_1.jpg') }}"
                                                             alt="grid">
                                                         <div class="gridarea__small__content">
+                                                            <h4><a href="/showvideo/{{video.id}}" class="text-primary" style="text-decoration: none; font-size: 20px;"><a href="{{video.url_video}}" class="text-primary" style="text-decoration: none; font-size: 20px;">LINK DEL CURSO</a></h4>
                                                             <h6>Jose Rios</h6>
                                                         </div>
                                                     </div>
@@ -234,11 +239,23 @@
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <td style="display: flex; justify-content: space-between;">
-                                                    <a href="#" class="btn btn-secondary"
-                                                        style="background-color: yellowgreen;">Añadir</a>
-                                                    <a href="#" class="btn btn-danger">Eliminar</a>
-                                                </td>
+                                                <form action="/carrito_add" method="post">
+                                                    <div class="mt-4">
+                                                    <div class="quantity mb-3" style="display: none;" >
+                                                    
+                                                        <h6>Ingresar la cantidad </h6>
+                                                        <input type="hidden" name="id" value="{{video.id}}">
+                                                        <input type="number" name="cantidad" min="1" step="1" value="1">
+                                                    </div>
+                                                    <button type="submit">
+                                                    <div class="btn btn-secondary" style="background-color: yellowgreen;">
+                                                    <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                                                    Añadir
+                                                    </div>
+                                                    </div>
+                                                  </button>
+                                                </form>
+                                                    </div>
                                             </tr>
                                         </tbody>
                                     </table>
