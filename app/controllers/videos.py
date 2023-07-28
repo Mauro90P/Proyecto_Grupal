@@ -1,4 +1,4 @@
-from flask import render_template, session, redirect,request,url_for,make_response, flash
+from flask import render_template, session, redirect,request,url_for,make_response
 from app.models.usuarios import Usuario
 from app.models.videos import Video
 from app import app
@@ -10,7 +10,7 @@ def videos():
         return redirect('/login')
 
     videos = Video.get_all()
-
+    print(videos)
     return render_template("menu.html", videos=videos)
 
 
@@ -22,7 +22,7 @@ def search():
     print(videos)
     return render_template("menu.html", videos=videos)
 
-#mostrar videos
+#mostrar videos 
 @app.route("/showvideo/<int:video_id>")
 def showvideo(video_id):
 
@@ -51,13 +51,19 @@ def carrito_add():
 
 @app.route('/carrito')
 def carrito():
-    
-    data = {"id": session['usuario']["usuario_id"]}
+    try:
+        datos = json.loads(request.cookies.get('galleta'))
+    except:
+     datos = []
+    videos = []
+    total = 0
+    for video in datos:
+        videos = videos + Video.get_by_id(video['id'])
 
-    videos = Video.get_all_by_user(data)
-
-
-    return render_template("carrito.html", videos=videos)
+    for video in videos:
+        total = total + int(video.duracion)
+    print(total)
+    return render_template("carrito.html", datos=datos, video=videos, videos=videos, total = format(total, ',d'))
 
 @app.route('/carrito_delete/<id>')
 

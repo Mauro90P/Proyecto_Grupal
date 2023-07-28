@@ -17,7 +17,7 @@
           <a href="/"><img class="logotipo" src="/static/img/banco.png" alt="BANCO DELIVERY" style="width: 150px;"></a>
             
             <form action="/search" method="post"  class="form-inline d-flex gap-2">
-              <input class="form-control" name="producto" type="search" placeholder="Buscar Producto" aria-label="Search" style="width: 500px;">
+              <input class="form-control" name="video" type="search" placeholder="Buscar Video" aria-label="Search" style="width: 500px;">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
           
@@ -32,27 +32,24 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th></th>
           <th>Video</th>
-          <th>Descripcion</th>
+          <th>Nombre</th>
+          <th>Duracion</th>
           <th>Acción</th>
         </tr>
-      </thead>
-      <tbody>
-        {% for video in videos %}
+      </thead> 
+    <tbody>
+      {% for video in videos %}
 
         <tr>
-          <td class="video-image-thumb active" style="width: 400px; height: 400px; display: grid; place-items: center;">
-            <a href="/showvideo/{{video.id}}"><video width="200px" height="200px" controls>
-            <source src="{{ video.video }}" type="video/mp4">
-            Tu navegador no admite el elemento de video.
-        </video></a></td>
-          <td>{{video.duracion}}</td>
+          <td><a href="/showvideo/{{video.id}}"><img src="{{video.video}}" width="80px"></a></td>
+          <td>{{video.nombre}}</td>
           <td>{{video.duracion}} soles</td>
-          <td><a href="/carrito_delete/{{videos.id}}">Eliminar</a></td>
+          <td><a href="/carrito_delete/{{video.id}}">Eliminar</a></td> 
         </tr>
-        {% endfor %}
 
+        {% endfor %}
+        
       </tbody>
     </table>
   </div>

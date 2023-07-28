@@ -41,21 +41,28 @@
         <div class="col-12">
 
         </div>
-        <div class="col-12 video-image-thumbs">
-        <div class="video-image-thumb active" style="width: 400px; height: 400px; display: grid; place-items: center;"><video width="200px" height="200px" controls>
-          <source src="{{ video.video }}" type="video/mp4">
-          Tu navegador no admite el elemento de video.
-      </video></div>
-
-        </div>
+        <div class="col-12 product-image-thumbs">
+        <div class="product-image-thumb active" style="width: 400px; height: 400px; display: grid; place-items: center;"><img src="{{video.video}}" alt="Product video" width="350px"></div>
+      
         </div>
         <div class="col-12 col-sm-6">
         <h3 class="my-3">{{video.nombre}}</h3>
-        <p style="text-align: justify;">{{video.duracion}}</p>
+        <p style="text-align: justify;">Duracion: {{video.duracion}} minutos</p>
         <hr>
-        
+
+        <div class="bg-gray py-2 px-3 mt-4">
+        <h2 class="mb-0">
+        {{video.duracion}} MINUTOS
+        </h2>
+
         <form action="/carrito_add" method="post">
         <div class="mt-4">
+          <div class="quantity mb-3" style="display: none;" >
+        
+            <h6>Ingresar la cantidad </h6>
+            <input type="hidden" name="id" value="{{video.id}}">
+            <input type="number" name="cantidad" min="1" step="1" value="1">
+          </div>
         <button type="submit">
         <div class="btn btn-primary btn-lg btn-flat">
         <i class="fas fa-cart-plus fa-lg mr-2"><img src="/static/img/carrito.png" alt="carrito" style="width: 30px;"></i>
