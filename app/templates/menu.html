@@ -44,13 +44,14 @@
                 <div style="width: 200px; height: 200px; display: grid;place-items: center;">
                     <img src="{{video.video}}" width="200px"/>
                 </div>
+                <div></div>
+                <a href="/showvideo/{{video.id}}" class="text-primary" style="text-decoration: none; font-size: 20px;"><a href="{{video.link}}" class="text-primary" style="text-decoration: none; font-size: 20px;">LINK</a> </a>
+                <div></div>
                 <a href="/showvideo/{{video.id}}" class="text-primary" style="text-decoration: none; font-size: 20px;">{{video.nombre}}</a>
-                <a>link</a>
                 <p style="color:rgb(214, 43, 43); font-size:large;font-weight: bold;">Duracion: {{video.duracion}} minutos</p>
             </div>
             {% endfor %}
-    
-        </div>
+        </div>  
     </div>
 </body>
 </html>

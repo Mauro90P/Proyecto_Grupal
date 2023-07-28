@@ -9,8 +9,10 @@ class Video:
         self.id = video["id"]
         self.codigo = video["codigo"]
         self.nombre = video["nombre"]
+        self.link = video["link"]
         self.duracion = video["duracion"]
         self.video = video["video"]
+        
 
     @classmethod
     def get_all(cls):
